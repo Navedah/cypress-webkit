@@ -1,0 +1,21 @@
+#name: Cypress Test Culture
+     
+on:
+  push:
+       branches: ['main1']
+
+jobs:
+     testing:
+          runs-on: ubuntu-latest
+          steps:
+          - uses: actions/checkout@v2
+          - uses: actions/setup-node@v2
+            with:
+               node-version: 12
+          - run: | 
+                npm install -g lambdatest-cypress-cli
+                export LT_USERNAME=naveda
+                export LT_ACCESS_KEY=Y38l1pghEBmUKFqfk5XZSPrwP9Tc2cU8eWNaBPZjRYpXhYerxb
+                echo "The $LT_USERNAME"
+                lambdatest-cypress --version
+                lambdatest-cypress run
